@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<!-- <meta charset="UTF-8"> -->
-	<title> Pagos</title>
+	<title>Pagos</title>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script>
 		$(document).ready(function(){
