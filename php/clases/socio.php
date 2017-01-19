@@ -2,7 +2,7 @@
 
 
 /**
-* 
+* Clase Socios
 */
 class Socio
 {
