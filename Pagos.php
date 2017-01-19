@@ -89,9 +89,9 @@
 				<option value="5">Pago de Cuota</option>
 			</select>
 			<input type="number" name="monto" min="1" step="0.1" placeholder="monto" required>
-			<input type="text" name="recibo" placeholder="000-000001" required>
+			<input type="text" name="numero" placeholder="000-000001" required>
 			<input type="date" name="fecha" id="fecha" required>
-			<input type="text" name="observaciones" placeholder="observaciones" required>
+			<input type="text" name="obs" placeholder="observaciones" required>
 		</p>
 		<p id="datos_ayec">
 		Numero de Cuenta

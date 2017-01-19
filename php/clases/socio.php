@@ -50,19 +50,19 @@ class Socio
 		}
 	}
 
-	function getId()
-	{
-		return $this->id;
-	}
+	// function getId()
+	// {
+	// 	return $this->id;
+	// }
 
 	function getDni()
 	{
 		return $this->dni;
 	}
 
-	function getShow()
+	function Show()
 	{
-		return "id->".$this->id." ".$this->getNombre();
+		echo "id->".$this->id." ".$this->getNombre()."</br>";
 	}
 
 	function getNombre()
@@ -79,6 +79,11 @@ class Socio
 	{
 		return $this->getDomicilio();
 	}
+
+	function getID()
+		{
+			return $this->id;
+		}
 }
 
 
