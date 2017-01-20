@@ -62,6 +62,8 @@ class Recibo
 
 	}
 
+	
+
 
 		function setsocio($_socio)
 		{

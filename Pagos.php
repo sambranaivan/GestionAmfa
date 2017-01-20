@@ -1,67 +1,13 @@
+<?php 
+require_once('php/conection.php'); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<!-- <meta charset="UTF-8"> -->
 	<title>Pagos</title>
+	<link rel="stylesheet" href="style.css">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script>
-		$(document).ready(function(){
-
-			$("#datos_ayec").css("display","none");
-		
-			$("#form_dni").keyup(function(){
-				if ($(this).val().length	 >= 7) 
-				{
-					getSocio($(this).val());
-				}				
-			})
-
-
-			function getSocio(_dni){
-				$.getJSON("php/getsocios.php",{dni:_dni},function(data){
-				
-				if (data) 
-				{
-					
-					$("#form_nombre").val(data.nombre)
-					$("#form_telefono").val(data.telefono)
-					$("#form_domicilio").val(data.domicilio)
-					$("#form_nroSoc").val(data.nroSocio)
-				}
-				else
-				{			
-						
-					$("#form_nombre").val("")
-					$("#form_telefono").val("")
-					$("#form_domicilio").val("")
-					$("#form_nroSoc").val("")
-				}
-
-			})}
-
-
-				$("#concepto").change(function(){
-					if ($(this).val() != 4)
-
-					 {
-
-			$("#datos_ayec").hide("fast")
-			$("#form_cuenta").removeAttr("required")
-					 }
-					 else
-					 {
-
-			$("#datos_ayec").show("fast")
-			$("#form_cuenta").attr("required","required")
-					 }
-				})
-
-
-
-
-
-		})
-	</script>
+	<script src="js/pagos.js"></script>
 </head>
 <body>
 <div>
@@ -106,7 +52,9 @@
 	</form>
 </div>
 <div id="detail">
-	
+	<?php 
+	require_once('detalle_recibos.php');
+	 ?>
 </div>
 </body>
 </html>
