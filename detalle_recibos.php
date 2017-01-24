@@ -5,6 +5,7 @@ left join socios S
 on R.socioId = S.id
 left join conceptos C 
 on R.concepto = C.id";
+
 $r = $db->query($q);
 
 if ($db->errno) 
