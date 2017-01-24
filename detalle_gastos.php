@@ -1,10 +1,6 @@
 <?php 
 
-$q = "SELECT R.numero,S.nombre, S.dni, monto,DATE_FORMAT(R.fecha, '%d/%m/%Y') as Fecha,C.descripcion, observaciones FROM recibos R
-left join socios S
-on R.socioId = S.id
-left join conceptos C 
-on R.concepto = C.id";
+$q = "SELECT DATE_FORMAT(fecha, '%d/%m/%Y') as fecha, recibo, beneficiario, monto, referencia FROM gastos";
 
 $r = $db->query($q);
 
@@ -27,6 +23,7 @@ else
 			echo "<tr>";
 			row($row);
 		}
+		///controls
 		
 		echo "</tr>";
 		echo "</table>";
@@ -47,7 +44,7 @@ function row($variable)
 	foreach ($variable as $key => $value) {
 		echo "<td>".$value."</td>";
 	}
-		echo '<td><a href="#">Borrar</a></td>';
+	echo '<td><a href="#">Borrar</a></td>';
 		echo '<td><a href="#">Editar</a></td>';
 	
 }

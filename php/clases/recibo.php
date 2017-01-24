@@ -46,6 +46,7 @@ class Recibo
 		{
 				$res = $res->fetch_assoc();
 				$this->setId($res['id']);
+				return true;
 				
 			}
 			else

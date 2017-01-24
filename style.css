@@ -1,8 +1,7 @@
-table{
-	border: 1px solid black;
-
+body{
+	font-family: verdana;
 }
 
-table td{
-	border:1px solid grey;
+table, table td{
+	border: 1px solid grey;
 }
