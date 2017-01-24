@@ -5,3 +5,24 @@ body{
 table, table td{
 	border: 1px solid grey;
 }
+
+.gastos{
+	background-color: #FFBD30;
+}
+
+.FARMACIA{
+	background-color: #78FFFF;
+}
+
+.CIRUGIA{
+	background-color: #7FFFB5;
+}
+
+
+.NACIMIENTO{
+	background-color: #FEB4ED;
+}
+
+.CASAMIENTO{
+	background-color: #EEFFAC;
+}
