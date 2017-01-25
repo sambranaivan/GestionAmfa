@@ -17,7 +17,7 @@ class Socio
 	{
 
 		global $db;
-		$query = "INSERT IGNORE INTO socios (dni,nombre,domicilio,telefono,nroSocio) values ($_dni,'$_nombre','$_domicilio','$_telefono',$_nroSocio)"; 
+		$query = "INSERT INTO socios (dni,nombre,domicilio,telefono,nroSocio) values ($_dni,'$_nombre','$_domicilio','$_telefono',$_nroSocio) ON DUPLICATE KEY UPDATE domicilio = '$_domicilio' , telefono = '$_telefono' "; 
 		$r = $db->query($query);
 
 		if ($db->errno) 

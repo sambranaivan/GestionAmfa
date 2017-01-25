@@ -1,14 +1,6 @@
 <?php 
 require_once("php/conection.php");
 
-define("FARMACIA", 1);
-define("CIRUGIA", 2);
-define("ORTOPEDIA", 3);
-define("ECONOMICA", 4);
-define("CUOTA", 5);
-define("PROVEEDURIA", 6);
-define("NACIMIENTO", 7);
-define("CASAMIENTO", 8);
 
 
 function getGastos($mes, $anio, $saldo)
@@ -64,7 +56,7 @@ function getRecibo($mes, $anio, $concepto, $saldo)
 {
 	global $db;
 	global $saldo;
-	$q = "select numero,monto,R.fecha as fecha,completo from recibos R left join conceptos C on R.concepto = c.id where R.concepto = $concepto AND (MONTH(R.fecha) = $mes and YEAR(R.fecha) = $anio)";
+	$q = "select numero,REPLACE(monto,'.',',') as monto,R.fecha as fecha,completo from recibos R left join conceptos C on R.concepto = c.id where R.concepto = $concepto AND (MONTH(R.fecha) = $mes and YEAR(R.fecha) = $anio) order by R.fecha asc";
 	$r = $db->query($q);
 
 	if ($db->errno) 
@@ -90,7 +82,7 @@ function getRecibo($mes, $anio, $concepto, $saldo)
 				echo "<td>".$row['monto']."</td>";
 				echo "<td></td>";
 				echo "</tr>";
-				$total += $row['monto'];
+				$total =  $total + $row['monto'];
 			}
 				echo '<tr class="'.$clase.'">';
 				echo "<td></td>";
@@ -99,7 +91,8 @@ function getRecibo($mes, $anio, $concepto, $saldo)
 				echo "<td></td>";
 				echo "<td></td>";
 				echo "<td><strong>$ ".$total."</strong></td>";
-				echo "<td><strong>$ ".($saldo-$total)."</strong></td>";
+					$saldo = $saldo - $total;
+				echo "<td><strong>$ ".($saldo)."</strong></td>";
 				echo "</tr>";
 				return $saldo;
 		}
@@ -110,41 +103,6 @@ function getRecibo($mes, $anio, $concepto, $saldo)
 	}
 }
 
-
-function getClase($c)
-{
-	switch ($c) {
-
-			case FARMACIA:
-			return "FARMACIA";
-			break;
-			case CIRUGIA:
-			return "CIRUGIA";
-			break;
-			case ORTOPEDIA:
-			return "ORTOPEDIA";
-			break;
-			case ECONOMICA:
-			return "ECONOMICA";
-			break;
-			case CUOTA:
-			return "CUOTA";
-			break;
-			case PROVEEDURIA:
-			return "PROVEEDURIA";
-			break;
-			case NACIMIENTO:
-			return "NACIMIENTO";
-			break;
-			case CASAMIENTO:
-			return "CASAMIENTO";
-			break;
-
-		default:
-			# code...
-			break;
-	}
-}
 
 
 

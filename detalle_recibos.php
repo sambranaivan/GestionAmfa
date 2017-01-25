@@ -1,10 +1,11 @@
+<div id="detalle_recibos">
 <?php 
 
-$q = "SELECT R.numero,S.nombre, S.dni, monto,DATE_FORMAT(R.fecha, '%d/%m/%Y') as Fecha,C.descripcion, observaciones FROM recibos R
+$q = "SELECT DATE_FORMAT(R.fecha, '%d/%m/%Y') as Fecha , R.numero, S.nrosocio ,S.nombre, S.dni,REPLACE(monto,'.',',') as monto, C.descripcion, observaciones, c.id as concepto FROM recibos R
 left join socios S
 on R.socioId = S.id
 left join conceptos C 
-on R.concepto = C.id";
+on R.concepto = C.id order by concepto asc, R.fecha asc, R.numero asc";
 
 $r = $db->query($q);
 
@@ -24,7 +25,8 @@ else
 				head($row);
 				$head = false;
 			}
-			echo "<tr>";
+			$clase = getClase($row['concepto']);
+			echo '<tr class="'.$clase.'">';
 			row($row);
 		}
 		
@@ -62,3 +64,4 @@ function head($variable)
 
 
  ?>
+ </div>

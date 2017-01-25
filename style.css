@@ -4,6 +4,7 @@ body{
 
 table, table td{
 	border: 1px solid grey;
+	font-size: 9px;
 }
 
 .gastos{
@@ -25,4 +26,8 @@ table, table td{
 
 .CASAMIENTO{
 	background-color: #EEFFAC;
+}
+
+#detalle_recibos{
+
 }
